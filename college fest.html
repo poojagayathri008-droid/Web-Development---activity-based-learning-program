@@ -1,0 +1,952 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Fest 2026 | Let's Make Memories!</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #fffaf5;
+    color: #28213e;
+    line-height: 1.7;
+}
+
+header {
+    background: #201638;
+    padding: 16px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    color: #ffdc75;
+}
+
+.logo span {
+    color: #ff6b9a;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #ffdc75;
+}
+
+.hero {
+    min-height: 550px;
+    padding: 75px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    color: white;
+    background:
+        radial-gradient(circle at 85% 15%, #ff6b9a 0, transparent 27%),
+        linear-gradient(125deg, #201638, #612a83, #c44578);
+}
+
+.hero-content {
+    max-width: 650px;
+    animation: enter .9s ease;
+}
+
+.pill {
+    display: inline-block;
+    border: 1px solid #ffdc75;
+    color: #ffdc75;
+    padding: 5px 14px;
+    border-radius: 25px;
+    font-size: 13px;
+    margin-bottom: 17px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.12;
+    margin-bottom: 18px;
+}
+
+.hero h1 span {
+    color: #ffdc75;
+}
+
+.hero p {
+    color: #f4e9fb;
+    margin-bottom: 25px;
+    font-size: 17px;
+}
+
+.hero-art {
+    font-size: clamp(90px, 15vw, 170px);
+    text-align: center;
+    animation: float 3s ease-in-out infinite;
+}
+
+.hero-art small {
+    display: block;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: #ffdc75;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 21px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    background: #ffdc75;
+    color: #201638;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    margin: 5px 5px 5px 0;
+}
+
+.btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: #fff;
+}
+
+.btn-light {
+    color: white;
+    background: transparent;
+    border: 1px solid white;
+}
+
+.ticker {
+    overflow: hidden;
+    white-space: nowrap;
+    background: #ffdc75;
+    color: #201638;
+    padding: 12px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    text-align: center;
+    background: white;
+    padding: 28px 7%;
+    gap: 15px;
+}
+
+.stats h2 {
+    color: #c44578;
+    font-size: 28px;
+}
+
+.stats p {
+    color: #777087;
+    font-size: 14px;
+}
+
+section {
+    padding: 70px 8%;
+    scroll-margin-top: 75px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(27px, 4vw, 37px);
+    color: #201638;
+    margin-bottom: 8px;
+}
+
+.section-title span {
+    color: #c44578;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777087;
+    margin-bottom: 32px;
+}
+
+.underline {
+    width: 65px;
+    height: 5px;
+    background: linear-gradient(90deg, #ff6b9a, #ffdc75);
+    margin: 0 auto 20px;
+    border-radius: 5px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    background: white;
+    border: 1px solid #e7d9ec;
+    padding: 9px 17px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #612a83;
+    color: white;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 23px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 17px;
+    overflow: hidden;
+    border: 1px solid #f0e5ed;
+    box-shadow: 0 6px 22px #39234a0c;
+    transition: .3s;
+}
+
+.event-card:hover {
+    transform: translateY(-7px) rotate(-.3deg);
+    box-shadow: 0 13px 28px #39234a20;
+}
+
+.event-banner {
+    height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 66px;
+}
+
+.pink { background: linear-gradient(135deg, #ff8db1, #ffbfd0); }
+.purple { background: linear-gradient(135deg, #7760db, #c6a9ff); }
+.orange { background: linear-gradient(135deg, #ff9d69, #ffda83); }
+.blue { background: linear-gradient(135deg, #6fcde0, #a9f0e2); }
+.green { background: linear-gradient(135deg, #74cba0, #d0ef9c); }
+
+.event-info {
+    padding: 21px;
+}
+
+.category {
+    display: inline-block;
+    padding: 4px 11px;
+    border-radius: 20px;
+    background: #f5eafa;
+    color: #6b3486;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.event-info h3 {
+    margin: 10px 0 5px;
+    font-size: 21px;
+}
+
+.event-info p {
+    font-size: 14px;
+    color: #777087;
+    margin-bottom: 12px;
+}
+
+.meta {
+    font-size: 13px;
+    color: #514766;
+    margin: 4px 0;
+}
+
+.event-info .btn {
+    margin-top: 12px;
+}
+
+.fun-section {
+    background: #fff0f4;
+}
+
+.fun-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.fun-card {
+    text-align: center;
+    background: white;
+    border-radius: 15px;
+    padding: 24px 14px;
+    transition: .3s;
+}
+
+.fun-card:hover {
+    transform: translateY(-6px);
+}
+
+.fun-card div {
+    font-size: 40px;
+}
+
+.fun-card h3 {
+    margin: 8px 0;
+}
+
+.fun-card p {
+    font-size: 13px;
+    color: #777087;
+}
+
+.schedule-section {
+    background: #f0edff;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    border-radius: 13px;
+    background: white;
+    box-shadow: 0 5px 20px #00000009;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 550px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee8f4;
+}
+
+th {
+    background: #33204f;
+    color: white;
+}
+
+tr:hover td {
+    background: #fff8fb;
+}
+
+.rules-box {
+    max-width: 850px;
+    margin: auto;
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px #00000008;
+}
+
+.rules-box li {
+    margin: 9px 0 9px 22px;
+    color: #5e566c;
+}
+
+.register-layout {
+    display: grid;
+    grid-template-columns: .85fr 1.15fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.register-promo {
+    padding: 30px;
+    border-radius: 17px;
+    background: linear-gradient(145deg, #201638, #8e387c);
+    color: white;
+}
+
+.register-promo h3 {
+    font-size: 28px;
+    margin-bottom: 14px;
+}
+
+.register-promo p {
+    color: #f4e8fa;
+    margin: 12px 0;
+}
+
+.registration-form {
+    padding: 28px;
+    background: white;
+    border-radius: 17px;
+    box-shadow: 0 5px 25px #0000000c;
+}
+
+.registration-form label {
+    display: block;
+    margin: 12px 0 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.registration-form input,
+.registration-form select,
+.registration-form textarea {
+    width: 100%;
+    padding: 12px;
+    font: inherit;
+    border: 1px solid #e0d7e8;
+    border-radius: 8px;
+    background: white;
+}
+
+.registration-form input:focus,
+.registration-form select:focus,
+.registration-form textarea:focus {
+    outline: 2px solid #d5a2ef;
+}
+
+#form-message {
+    color: #21774b;
+    margin-top: 12px;
+    overflow-wrap: anywhere;
+}
+
+footer {
+    background: #201638;
+    text-align: center;
+    padding: 32px 8%;
+    color: #eee7f7;
+}
+
+footer h3 {
+    color: #ffdc75;
+    font-size: 25px;
+}
+
+footer p {
+    font-size: 14px;
+    margin: 5px;
+}
+
+footer a {
+    color: #ffdc75;
+    text-decoration: none;
+}
+
+@keyframes enter {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-13px); }
+}
+
+@media(max-width: 900px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .event-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .fun-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .register-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 580px) {
+    section {
+        padding: 50px 6%;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .event-grid,
+    .fun-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        gap: 11px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero-art {
+        font-size: 90px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">VIBE<span>✦</span>FEST</div>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#events">Events</a>
+        <a href="#fun">Fun Zone</a>
+        <a href="#schedule">Timetable</a>
+        <a href="#rules">Rules</a>
+        <a href="#register">Join the Fun</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <span class="pill">THE CAMPUS IS ABOUT TO GO WILD! 🎉</span>
+        <h1>Less Stress.<br>More <span>VIBE!</span></h1>
+        <p>
+            Ready for two days of crazy fun, epic performances,
+            delicious food, friendly competitions and memories
+            you'll talk about long after the fest ends?
+            Grab your gang. This one's for YOU!
+        </p>
+        <a href="#events" class="btn">What's Happening? ✨</a>
+        <a href="#register" class="btn btn-light">I'm In! 🎟️</a>
+    </div>
+
+    <div class="hero-art">
+        🎉
+        <small>FUN MODE: ON</small>
+    </div>
+</section>
+
+<div class="ticker">
+    🎤 SING IT LOUD &nbsp; ✦ &nbsp; 💃 DANCE LIKE NOBODY'S WATCHING
+    &nbsp; ✦ &nbsp; 🍕 EAT. PLAY. REPEAT.
+    &nbsp; ✦ &nbsp; 📸 MAKE SOME MEMORIES!
+</div>
+
+<div class="stats">
+    <div><h2>15+</h2><p>Fun Activities</p></div>
+    <div><h2>2 Days</h2><p>Non-stop Vibes</p></div>
+    <div><h2>∞</h2><p>Happy Memories</p></div>
+    <div><h2>YOU!</h2><p>That's What's Missing</p></div>
+</div>
+
+<!-- Events -->
+<section id="events">
+    <h2 class="section-title">Pick Your <span>Kind of Fun!</span></h2>
+    <div class="underline"></div>
+    <p class="subtitle">
+        Bookworm, dance freak, foodie or full-time entertainer?
+        We've got something for your vibe!
+    </p>
+
+    <div class="filters">
+        <button class="filter-btn active" data-filter="all">Everything 🎉</button>
+        <button class="filter-btn" data-filter="culture">Dance & Music 🎶</button>
+        <button class="filter-btn" data-filter="fashion">Style & Art 🎨</button>
+        <button class="filter-btn" data-filter="fun">Games & Fun 🎯</button>
+        <button class="filter-btn" data-filter="food">Food & Photos 🍕</button>
+        <button class="filter-btn" data-filter="tech">Tech Corner 💻</button>
+    </div>
+
+    <div class="event-grid">
+
+        <article class="event-card" data-category="culture">
+            <div class="event-banner pink">💃</div>
+            <div class="event-info">
+                <span class="category">Dance</span>
+                <h3>Dance Floor Fever</h3>
+                <p>Solo, duo or squad! Bring your best moves and own that stage.</p>
+                <div class="meta">📍 Main Stage</div>
+                <div class="meta">🕒 Day 1 · 11 AM</div>
+                <a href="#register" class="btn">Count Me In!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="culture">
+            <div class="event-banner purple">🎤</div>
+            <div class="event-info">
+                <span class="category">Music</span>
+                <h3>Mic Drop Moments</h3>
+                <p>Sing your heart out, show off your voice and own the mic!</p>
+                <div class="meta">📍 Open Stage</div>
+                <div class="meta">🕒 Day 1 · 1 PM</div>
+                <a href="#register" class="btn">Let's Sing!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="fashion">
+            <div class="event-banner orange">👗</div>
+            <div class="event-info">
+                <span class="category">Fashion</span>
+                <h3>Ramp Walk Rebels</h3>
+                <p>Bring your style, confidence and attitude to the fashion runway.</p>
+                <div class="meta">📍 Main Stage</div>
+                <div class="meta">🕒 Day 1 · 3 PM</div>
+                <a href="#register" class="btn">Own the Ramp!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="fun">
+            <div class="event-banner blue">🎮</div>
+            <div class="event-info">
+                <span class="category">Games</span>
+                <h3>Game On!</h3>
+                <p>Challenge your friends with fun team games and friendly battles.</p>
+                <div class="meta">📍 Activity Zone</div>
+                <div class="meta">🕒 Day 1 · 10 AM</div>
+                <a href="#register" class="btn">Let's Play!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="fun">
+            <div class="event-banner pink">😂</div>
+            <div class="event-info">
+                <span class="category">Entertainment</span>
+                <h3>Meme & Mimic Mania</h3>
+                <p>Bring your funniest impressions and original campus memes.</p>
+                <div class="meta">📍 Fun Arena</div>
+                <div class="meta">🕒 Day 1 · 2 PM</div>
+                <a href="#register" class="btn">Make Us Laugh!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="fashion">
+            <div class="event-banner purple">🎨</div>
+            <div class="event-info">
+                <span class="category">Creative Arts</span>
+                <h3>Doodle & Chill</h3>
+                <p>Doodle, paint and create something cool. Let your imagination loose!</p>
+                <div class="meta">📍 Art Corner</div>
+                <div class="meta">🕒 Day 2 · 10 AM</div>
+                <a href="#register" class="btn">Show Your Art!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="food">
+            <div class="event-banner orange">🍕</div>
+            <div class="event-info">
+                <span class="category">Food Fest</span>
+                <h3>Foodie Paradise</h3>
+                <p>Street food, sweet treats and tasty bites. Come hungry, leave happy!</p>
+                <div class="meta">📍 Food Street</div>
+                <div class="meta">🕒 Both Days · 11 AM–5 PM</div>
+                <a href="#register" class="btn">Explore Food!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="food">
+            <div class="event-banner pink">📸</div>
+            <div class="event-info">
+                <span class="category">Photography</span>
+                <h3>Picture Perfect</h3>
+                <p>Capture candid smiles, squad pictures and the best fest moments.</p>
+                <div class="meta">📍 Photo Booth</div>
+                <div class="meta">🕒 Both Days</div>
+                <a href="#register" class="btn">Strike a Pose!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="culture">
+            <div class="event-banner purple">🎸</div>
+            <div class="event-info">
+                <span class="category">Live Music</span>
+                <h3>Battle of the Bands</h3>
+                <p>Live music, loud cheers and your favourite campus performers!</p>
+                <div class="meta">📍 Main Stage</div>
+                <div class="meta">🕒 Day 2 · 2 PM</div>
+                <a href="#register" class="btn">Feel the Beat!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="fun">
+            <div class="event-banner green">🎯</div>
+            <div class="event-info">
+                <span class="category">Mini Games</span>
+                <h3>Challenge Accepted</h3>
+                <p>Try quick challenges, puzzles and hilarious games with your gang.</p>
+                <div class="meta">📍 Fun Zone</div>
+                <div class="meta">🕒 Both Days</div>
+                <a href="#register" class="btn">Take the Challenge!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="tech">
+            <div class="event-banner blue">🤖</div>
+            <div class="event-info">
+                <span class="category">Technology</span>
+                <h3>Geek Mode On</h3>
+                <p>Explore AI, coding games, creative tech demos and cool ideas.</p>
+                <div class="meta">📍 Innovation Lab</div>
+                <div class="meta">🕒 Day 2 · 10 AM</div>
+                <a href="#register" class="btn">Explore Tech!</a>
+            </div>
+        </article>
+
+        <article class="event-card" data-category="culture">
+            <div class="event-banner orange">🎧</div>
+            <div class="event-info">
+                <span class="category">Grand Finale</span>
+                <h3>DJ Night & After Vibes</h3>
+                <p>End the fest with beats, lights, dancing and one last squad memory!</p>
+                <div class="meta">📍 Main Stage</div>
+                <div class="meta">🕒 Day 2 · 5 PM</div>
+                <a href="#register" class="btn">Save the Date!</a>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- Extra fun -->
+<section class="fun-section" id="fun">
+    <h2 class="section-title">Not Your Thing? <span>No Problem!</span></h2>
+    <div class="underline"></div>
+    <p class="subtitle">Chill, explore and enjoy the fest your own way.</p>
+
+    <div class="fun-grid">
+        <div class="fun-card">
+            <div>🛍️</div>
+            <h3>Mini Flea Market</h3>
+            <p>Discover cute accessories, handmade stuff and little surprises.</p>
+        </div>
+
+        <div class="fun-card">
+            <div>🧋</div>
+            <h3>Chill & Sip</h3>
+            <p>Grab your favourite drink and catch up with your friends.</p>
+        </div>
+
+        <div class="fun-card">
+            <div>🎭</div>
+            <h3>Drama Corner</h3>
+            <p>Funny skits, short plays and unexpected stage moments.</p>
+        </div>
+
+        <div class="fun-card">
+            <div>🪩</div>
+            <h3>Squad Hangout</h3>
+            <p>Music, selfies, laughter and absolutely zero boring moments.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Timetable -->
+<section class="schedule-section" id="schedule">
+    <h2 class="section-title">The <span>Fest Timetable</span> 🗓️</h2>
+    <div class="underline"></div>
+    <p class="subtitle">Plan your squad's day so you don't miss the good stuff!</p>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Day & Time</th>
+                    <th>What's Happening?</th>
+                    <th>Where?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Day 1 · 10 AM</td><td>Game On! 🎮</td><td>Activity Zone</td></tr>
+                <tr><td>Day 1 · 11 AM</td><td>Dance Floor Fever 💃</td><td>Main Stage</td></tr>
+                <tr><td>Day 1 · 1 PM</td><td>Mic Drop Moments 🎤</td><td>Open Stage</td></tr>
+                <tr><td>Day 1 · 2 PM</td><td>Meme & Mimic Mania 😂</td><td>Fun Arena</td></tr>
+                <tr><td>Day 1 · 3 PM</td><td>Ramp Walk Rebels 👗</td><td>Main Stage</td></tr>
+                <tr><td>Day 2 · 10 AM</td><td>Geek Mode On 🤖</td><td>Innovation Lab</td></tr>
+                <tr><td>Day 2 · 11 AM</td><td>Doodle & Chill 🎨</td><td>Art Corner</td></tr>
+                <tr><td>Day 2 · 2 PM</td><td>Battle of the Bands 🎸</td><td>Main Stage</td></tr>
+                <tr><td>Day 2 · 5 PM</td><td>DJ Night & After Vibes 🎧</td><td>Main Stage</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Rules -->
+<section id="rules">
+    <h2 class="section-title">A Few <span>Fest Rules</span> 💛</h2>
+    <div class="underline"></div>
+    <p class="subtitle">It's all fun and games, but let's keep it awesome for everyone!</p>
+
+    <div class="rules-box">
+        <ol>
+            <li>Bring your college ID and register for the events you want to join.</li>
+            <li>Reach the venue on time. The best moments shouldn't happen without you!</li>
+            <li>Cheer for everyone. We're here to celebrate talent, not put people down.</li>
+            <li>Keep the campus clean. Use bins and respect the fest spaces.</li>
+            <li>Ask permission before posting someone else's close-up photos or videos.</li>
+            <li>Follow stage, crowd-safety and event-coordinator instructions.</li>
+            <li>Respect everyone's choices, personal space and performances.</li>
+            <li>Most importantly, have fun and make memories responsibly!</li>
+        </ol>
+    </div>
+</section>
+
+<!-- Registration -->
+<section id="register" class="fun-section">
+    <h2 class="section-title">Okay, You're <span>Coming, Right?</span> 🎟️</h2>
+    <div class="underline"></div>
+    <p class="subtitle">Fill this out and get ready to make some noise!</p>
+
+    <div class="register-layout">
+        <div class="register-promo">
+            <h3>Your Fest Era Starts Here! ✨</h3>
+            <p>💃 Dance like it's your stage.</p>
+            <p>🎤 Sing like everyone's listening.</p>
+            <p>🍕 Eat like it's a food festival. (Because it is!)</p>
+            <p>📸 Take pictures you'll laugh about later.</p>
+            <p>🤝 Meet people, make friends and enjoy every moment.</p>
+            <hr style="border-color:#ffffff44; margin:22px 0;">
+            <p><strong>Event:</strong> VIBE FEST 2026</p>
+            <p><strong>Venue:</strong> College Campus</p>
+            <p><strong>Duration:</strong> 2 Days</p>
+            <p style="font-size:13px;">
+                Sample project information. Replace the festival
+                dates, venue and details with your college's actual information.
+            </p>
+        </div>
+
+        <form class="registration-form" id="registration-form">
+            <h3>Let's Get You Registered! 🥳</h3>
+
+            <label for="name">What's your name?</label>
+            <input id="name" type="text" placeholder="Your full name" required>
+
+            <label for="college">Which college are you from?</label>
+            <input id="college" type="text" placeholder="College name" required>
+
+            <label for="email">Your email address</label>
+            <input id="email" type="email" placeholder="you@example.com" required>
+
+            <label for="branch">Your department</label>
+            <select id="branch" required>
+                <option value="">Choose your branch</option>
+                <option>CSM - AI & ML</option>
+                <option>CSE</option>
+                <option>ECE</option>
+                <option>EEE</option>
+                <option>Mechanical</option>
+                <option>Civil</option>
+                <option>Other</option>
+            </select>
+
+            <label for="event">What are you joining?</label>
+            <select id="event" required>
+                <option value="">Pick your event</option>
+                <option>Dance Floor Fever</option>
+                <option>Mic Drop Moments</option>
+                <option>Ramp Walk Rebels</option>
+                <option>Game On!</option>
+                <option>Meme & Mimic Mania</option>
+                <option>Doodle & Chill</option>
+                <option>Foodie Paradise</option>
+                <option>Picture Perfect</option>
+                <option>Battle of the Bands</option>
+                <option>Challenge Accepted</option>
+                <option>Geek Mode On</option>
+                <option>DJ Night & After Vibes</option>
+            </select>
+
+            <label for="message">Anything else? (Optional)</label>
+            <textarea id="message" rows="3"
+                placeholder="Team name, questions, or just say hi!"></textarea>
+
+            <button class="btn" type="submit">I'm Ready! Let's Go 🎉</button>
+            <p id="form-message" role="status" aria-live="polite"></p>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <h3>VIBE FEST ✦ 2026</h3>
+    <p>Good vibes. Great people. Unforgettable memories.</p>
+    <p>Made with 💖 for every student who loves a good fest.</p>
+    <p>© 2026 Vibe Fest | College Fest Website Project</p>
+    <p><a href="#home">Back to the top ↑</a></p>
+</footer>
+
+<script>
+// Event category filters
+const buttons = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".event-card");
+
+buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+        buttons.forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        const category = button.dataset.filter;
+
+        cards.forEach(function(card) {
+            card.style.display =
+                category === "all" ||
+                card.dataset.category === category
+                ? "block" : "none";
+        });
+    });
+});
+
+// Demo registration form
+document.getElementById("registration-form").addEventListener(
+    "submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const chosenEvent = document.getElementById("event").value;
+
+        document.getElementById("form-message").textContent =
+            "Yay, " + name + "! 🎉 Your form for " + chosenEvent +
+            " has been validated. This demo does not save or send your details.";
+
+        this.reset();
+    }
+);
+</script>
+
+</body>
+</html>
+

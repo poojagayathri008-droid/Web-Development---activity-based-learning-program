@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pooja Gayathri | Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7ff;
+            color: #263247;
+            line-height: 1.7;
+        }
+
+        /* Navigation Bar */
+        header {
+            background: #101b38;
+            color: white;
+            padding: 16px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 15px #0002;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: #72e0d1;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #72e0d1;
+            border-bottom: 2px solid #72e0d1;
+            padding-bottom: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            padding: 70px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(135deg, #101b38, #263e72);
+            color: white;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            animation: slideIn 1s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 60px);
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .hero h1 span {
+            color: #72e0d1;
+        }
+
+        .hero p {
+            color: #d6def2;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            display: inline-block;
+            color: #72e0d1;
+            border: 1px solid #72e0d1;
+            padding: 6px 15px;
+            border-radius: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #72e0d1;
+            color: #101b38;
+            text-decoration: none;
+            padding: 11px 23px;
+            border-radius: 7px;
+            font-weight: bold;
+            margin: 5px 8px 5px 0;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            background: white;
+        }
+
+        .outline-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .profile-circle {
+            width: 240px;
+            height: 240px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #72e0d1, #b3a6ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 90px;
+            color: #101b38;
+            border: 8px solid #ffffff30;
+            box-shadow: 0 0 40px #72e0d155;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Common Sections */
+        section {
+            padding: 75px 8%;
+            scroll-margin-top: 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            color: #101b38;
+            margin-bottom: 10px;
+        }
+
+        .underline {
+            width: 65px;
+            height: 4px;
+            background: #36b9a8;
+            margin: 0 auto 35px;
+            border-radius: 5px;
+        }
+
+        .about {
+            max-width: 850px;
+            text-align: center;
+            margin: auto;
+            font-size: 17px;
+        }
+
+        .highlight {
+            color: #158d80;
+            font-weight: bold;
+        }
+
+        /* Cards and Grids */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 20px #17244710;
+            border: 1px solid #e7ebf5;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 28px #17244720;
+            border-color: #72cfc2;
+        }
+
+        .card h3 {
+            color: #172c55;
+            margin: 10px 0;
+        }
+
+        .card p {
+            color: #5d687c;
+            font-size: 15px;
+        }
+
+        .card-icon {
+            font-size: 32px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 13px;
+        }
+
+        .skill {
+            background: white;
+            color: #172c55;
+            border: 1px solid #d9e3f5;
+            border-radius: 25px;
+            padding: 10px 22px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: #172c55;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Resume Section */
+        .resume-box {
+            background: #101b38;
+            color: white;
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .resume-box h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .resume-box p {
+            color: #d6def2;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 13px;
+            margin: 9px 0;
+            border: 1px solid #d5ddec;
+            border-radius: 8px;
+            font: inherit;
+            background: white;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: 2px solid #72cfc2;
+            border-color: transparent;
+        }
+
+        .contact-form button {
+            border: none;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        #form-message {
+            margin-top: 12px;
+            color: #158d80;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #101b38;
+            color: #d6def2;
+            text-align: center;
+            padding: 22px;
+        }
+
+        footer span {
+            color: #72e0d1;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 55px 6%;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-circle {
+                width: 175px;
+                height: 175px;
+                font-size: 65px;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">PG.</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#resume">Resume</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home / Hero -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <span class="tag">Welcome to my portfolio</span>
+            <h1>Hi, I'm <span>Pooja Gayathri</span></h1>
+            <h2>First-Year B.Tech Student | CSM</h2>
+            <p>
+                I am an enthusiastic Computer Science student interested in
+                Artificial Intelligence, programming, and web development.
+                I enjoy learning new technologies and building creative
+                projects that solve real-world problems.
+            </p>
+            <a href="#projects" class="btn">Explore My Work ↗</a>
+            <a href="#contact" class="btn outline-btn">Contact Me</a>
+        </div>
+
+        <div class="profile-circle" aria-label="PG profile icon">
+            PG
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="underline"></div>
+        <div class="about">
+            <p>
+                Hello! I am <span class="highlight">Pooja Gayathri</span>,
+                a first-year B.Tech student in the
+                <span class="highlight">CSM branch</span>.
+                I have a strong interest in Artificial Intelligence and
+                Machine Learning, coding, and creative web design.
+                My goal is to improve my technical knowledge, develop
+                problem-solving skills, and create useful digital solutions.
+            </p>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" style="background:#edf1fb;">
+        <h2 class="section-title">Educational Qualifications</h2>
+        <div class="underline"></div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🎓</div>
+                <h3>B.Tech - CSM</h3>
+                <p>Computer Science and Engineering (AI & ML)</p>
+                <p>Currently pursuing First Year</p>
+                <p>College: NRI University</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📘</div>
+                <h3>Intermediate</h3>
+                <p>I have Passed out of scoring 93%</p>
+                <p>Higher Secondary Education</p>
+                <p>College: Krishna Reddy Chaitanya</p>
+                <p>Year: 2024-2026</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏫</div>
+                <h3>School Education</h3>
+                <p>I have passed out of scoring 96%</p>
+                <p>Secondary School Certificate (SSC)</p>
+                <p>School:Thrividha E.M High School</p>
+                <p>Year: 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="underline"></div>
+
+        <div class="skills">
+            <span class="skill">HTML5</span>
+            <span class="skill">CSS3</span>
+            <span class="skill">Python</span>
+            <span class="skill">C Programming</span>
+            <span class="skill">JavaScript Basics</span>
+            <span class="skill">Artificial Intelligence</span>
+            <span class="skill">Machine Learning Basics</span>
+            <span class="skill">Problem Solving</span>
+        </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section id="hobbies" style="background:#edf1fb;">
+        <h2 class="section-title">My Hobbies</h2>
+        <div class="underline"></div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">💻</div>
+                <h3>Coding</h3>
+                <p>Practising programming and learning new technologies.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📚</div>
+                <h3>Learning</h3>
+                <p>Exploring AI tools, technology, and useful new ideas.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>Creative Design</h3>
+                <p>Designing attractive webpages and digital content.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="section-title">My Projects</h2>
+        <div class="underline"></div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <h3>Personal Portfolio</h3>
+                <p>
+                    A responsive website that presents my profile,
+                    skills, educational details, and projects using HTML
+                    and CSS.
+                </p>
+                <p><strong>Technology:</strong> HTML, CSS, JavaScript</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🍽️</div>
+                <h3>Food Facts Hub</h3>
+                <p>
+                    A food information website concept that displays
+                    dishes, ingredients, preparation methods, prices,
+                    and ratings.
+                </p>
+                <p><strong>Technology:</strong> HTML, CSS, JavaScript</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>Generative AI Awareness</h3>
+                <p>
+                    An educational project introducing Generative AI,
+                    its applications, useful tools, and responsible usage.
+                </p>
+                <p><strong>Focus:</strong> Artificial Intelligence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" style="background:#edf1fb;">
+        <h2 class="section-title">Achievements & Activities</h2>
+        <div class="underline"></div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🏆</div>
+                <h3>Academic Learning</h3>
+                <p>Developing foundational knowledge in computer science.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💡</div>
+                <h3>Project Development</h3>
+                <p>Practising website design and creating academic projects.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Skill Development</h3>
+                <p>Learning programming, AI concepts, and problem-solving.</p>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:20px; color:#5d687c;">
+            Add your actual certificates, competition results, and awards here.
+        </p>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume">
+        <div class="resume-box">
+            <h3>My Resume</h3>
+            <p>
+                Interested in learning more about my education,
+                technical skills, and projects?
+            </p>
+            <a href="#contact" class="btn">Request My Resume ↗</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="background:#edf1fb;">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="underline"></div>
+
+        <div class="contact-container">
+            <div class="about" style="margin-bottom:20px;">
+                <p>
+                    I am always interested in learning, collaborating,
+                    and working on creative technology projects.
+                    Feel free to contact me!
+                </p>
+            </div>
+
+            <form class="contact-form" id="contact-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <input type="text" id="subject" placeholder="Subject" required>
+                <textarea id="message" rows="5"
+                    placeholder="Write your message here..." required></textarea>
+                <button type="submit" class="btn">Send Message ↗</button>
+                <p id="form-message" role="status"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Designed with ♥ by <span>Pooja Gayathri</span></p>
+        <p>Branch: CSM | Personal Portfolio Website</p>
+        <p>© 2026 Pooja Gayathri. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Contact form demonstration
+        document.getElementById("contact-form").addEventListener(
+            "submit", function(event) {
+                event.preventDefault();
+
+                document.getElementById("form-message").textContent =
+                    "Thank you! Your form has been validated successfully. " +
+                    "This demo does not send messages to a server.";
+
+                this.reset();
+            }
+        );
+    </script>
+
+</body>
+</html>

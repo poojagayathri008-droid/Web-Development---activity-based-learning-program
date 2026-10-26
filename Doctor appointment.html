@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - HealthCare Plus</title>
+    <style>
+        :root {
+            --primary-color: #0284c7;
+            --primary-hover: #0369a1;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Doctor Profile Header */
+        .doctor-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .doctor-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .doctor-info h2 {
+            margin: 0 0 0.25rem 0;
+            color: var(--text-main);
+        }
+
+        .specialization {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timings, .fee {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0.25rem 0;
+        }
+
+        /* Slots Section */
+        h3 {
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .slot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .slot-btn {
+            background-color: #f1f5f9;
+            border: 1px solid var(--border-color);
+            padding: 0.6rem;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .slot-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .slot-btn.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Form Fields */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 0.85rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        @media (max-width: 600px) {
+            .doctor-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>HealthCare Plus</h1>
+        <span>Patient Portal</span>
+    </header>
+
+    <div class="container">
+        <!-- Doctor Profile Card -->
+        <div class="card">
+            <div class="doctor-header">
+                <div class="doctor-avatar">Dr</div>
+                <div class="doctor-info">
+                    <h2>Dr. Sarah Jenkins, MD</h2>
+                    <div class="specialization">Senior Cardiologist</div>
+                    <p class="timings"><strong>Consultation Timings:</strong> Mon - Sat (09:00 AM - 02:00 PM)</p>
+                    <p class="fee"><strong>Consultation Fee:</strong> $75 / Visit</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking & Registration Form -->
+        <div class="card">
+            <form action="#" method="POST">
+                
+                <h3>Select Available Appointment Slot</h3>
+                <div class="slot-grid">
+                    <button type="button" class="slot-btn">09:30 AM</button>
+                    <button type="button" class="slot-btn selected">10:00 AM</button>
+                    <button type="button" class="slot-btn">11:15 AM</button>
+                    <button type="button" class="slot-btn">12:00 PM</button>
+                    <button type="button" class="slot-btn">01:30 PM</button>
+                </div>
+
+                <h3>Patient Registration Details</h3>
+                
+                <div class="form-group">
+                    <label for="fullName">Patient Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter patient's full name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Mobile Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="e.g., (555) 000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" name="age" min="0" max="120" placeholder="Enter age" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender *</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other / Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="symptoms">Chief Complaint / Symptoms (Optional)</label>
+                    <textarea id="symptoms" name="symptoms" rows="3" placeholder="Briefly describe your symptoms or reason for visit"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Confirm Appointment</button>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
